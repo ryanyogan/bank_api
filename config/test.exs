@@ -4,9 +4,15 @@ use Mix.Config
 config :bank_api, BankAPI.Repo,
   username: "postgres",
   password: "postgres",
-  database: "bank_api_test",
+  database: "bank_api_readstore_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.InMemory
+
+config :commanded, Commanded.EventStore.Adapters.InMemory,
+  serializer: Commanded.Serialization.JsonSerializer
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
