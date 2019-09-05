@@ -34,7 +34,7 @@ defmodule BankAPI.Accounts.AccountsTest do
              :error,
              :command_validation_failure,
              _cmd,
-             ["Argument must be bigger than zero"]
+             ["Argument must be bigger than 0"]
            } =
              %{"initial_balance" => -10}
              |> Accounts.open_account()
@@ -43,7 +43,7 @@ defmodule BankAPI.Accounts.AccountsTest do
              :error,
              :command_validation_failure,
              _cmd,
-             ["Argument must be bigger than zero"]
+             ["Argument must be bigger than 0"]
            } =
              %{"initial_balance" => 0}
              |> Accounts.open_account()
