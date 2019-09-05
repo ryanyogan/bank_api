@@ -5,7 +5,7 @@ readstore_url = System.fetch_env!("READSTORE_URL")
 secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
 port = System.fetch_env!("PORT")
 
-config :bank_api, BankAPI.Repo, url: readstore_url
+# config :bank_api, BankAPI.Repo, url: readstore_url
 
 config :bank_api, BankAPIWeb.Endpoint,
   http: [port: port],

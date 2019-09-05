@@ -12,6 +12,7 @@ defmodule BankAPIWeb.FallbackController do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Bad command")
     |> render(:"422")
   end
 
@@ -19,6 +20,23 @@ defmodule BankAPIWeb.FallbackController do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Account already closed")
+    |> render(:"422")
+  end
+
+  def call(conn, {:error, :account_closed}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Account closed")
+    |> render(:"422")
+  end
+
+  def call(conn, {:error, :insufficient_funds}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Insufficent funds to process order")
     |> render(:"422")
   end
 
@@ -26,6 +44,7 @@ defmodule BankAPIWeb.FallbackController do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(BankAPIWeb.ErrorView)
+    |> assign(:message, "Command validation error")
     |> render(:"422")
   end
 end

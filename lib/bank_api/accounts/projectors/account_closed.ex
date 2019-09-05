@@ -11,7 +11,7 @@ defmodule BankAPI.Accounts.Projectors.AccountClosed do
     with {:ok, %Account{} = account} <- Accounts.get_account(evt.account_uuid) do
       Multi.update(
         multi,
-        :account,
+        :account_closed,
         Changeset.change(account, status: Account.status().closed)
       )
     else
