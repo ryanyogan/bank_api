@@ -19,11 +19,27 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :commanded,
-  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+# config :commanded,
+#   event_store_adapter: Commanded.EventStore.Adapters.EventStore
 
 config :commanded_ecto_projections,
   repo: BankAPI.Repo
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.Extreme
+
+config :commanded_extreme_adapter,
+  serializer: Commanded.Serialization.JsonSerializer,
+  stream_prefix: "commandeddev"
+
+config :extreme, :event_store,
+  db_type: :node,
+  host: "localhost",
+  port: 1113,
+  username: "admin",
+  password: "changeit",
+  reconnect_delay: 2_000,
+  max_attempts: :infinity
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

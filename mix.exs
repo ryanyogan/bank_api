@@ -37,9 +37,10 @@ defmodule BankAPI.MixProject do
 
       # Event Sourcing
       {:commanded, "~> 0.18"},
-      {:eventstore, "~> 0.16.1", runtime: Mix.env() != :test},
-      {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test},
+      # {:eventstore, "~> 0.16.1", runtime: Mix.env() != :test},
+      # {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test},
       {:commanded_ecto_projections, "~> 0.8"},
+      {:commanded_extreme_adapter, "~> 0.8"},
 
       # Testing & Utilities
       {:skooma, "~> 0.2.0"},

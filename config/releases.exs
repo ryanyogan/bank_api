@@ -2,12 +2,10 @@ import Config
 
 service_name = System.fetch_env!("SERVICE_NAME")
 readstore_url = System.fetch_env!("READSTORE_URL")
-eventstore_url = System.fetch_env!("EVENTSTORE_URL")
 secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
 port = System.fetch_env!("PORT")
 
 config :bank_api, BankAPI.Repo, url: readstore_url
-config :eventstore, EventStore.Storage, url: eventstore_url
 
 config :bank_api, BankAPIWeb.Endpoint,
   http: [port: port],
