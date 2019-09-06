@@ -12,5 +12,6 @@ defmodule BankAPIWeb.Router do
 
     post "/accounts/:id/deposit", AccountController, only: :deposit
     post "/accounts/:id/withdraw", AccountController, only: :withdraw
+    post "/accounts/:id/transfer", AccountController, only: :transfer
   end
 end

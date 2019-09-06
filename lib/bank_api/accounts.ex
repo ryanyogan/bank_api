@@ -11,13 +11,24 @@ defmodule BankAPI.Accounts do
     OpenAccount,
     CloseAccount,
     DepositIntoAccount,
-    WithdrawFromAccount
+    WithdrawFromAccount,
+    TransferBetweenAccounts
   }
 
   alias BankAPI.Accounts.Projections.Account
 
   def uuid_regex do
     ~r/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+  end
+
+  def transfer(source_id, amount, destination_id) do
+    %TransferBetweenAccounts{
+      account_uuid: source_id,
+      transfer_uuid: UUID.uuid4(),
+      transfer_amount: amount,
+      destination_account_uuid: destination_id
+    }
+    |> Router.dispatch()
   end
 
   def deposit(id, amount) do
