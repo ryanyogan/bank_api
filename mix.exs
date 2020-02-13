@@ -38,7 +38,10 @@ defmodule BankAPI.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:commanded, "~> 0.18"},
+      {:eventstore, "~> 0.16.1", runtime: Mix.env() != :test},
+      {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test}
     ]
   end
 

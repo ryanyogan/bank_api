@@ -1,6 +1,11 @@
-use Mix.Config
+import Config
 
-# Configure your database
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.InMemory
+
+config :commanded, Commanded.EventStore.Adapters.InMemory,
+  serializer: Commanded.Serialization.JsonSerializer
+
 config :bank_api, BankAPI.Repo,
   username: "postgres",
   password: "postgres",
@@ -8,11 +13,8 @@ config :bank_api, BankAPI.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-# We don't run a server during test. If one is required,
-# you can enable the server option below.
 config :bank_api, BankAPIWeb.Endpoint,
   http: [port: 4002],
   server: false
 
-# Print only warnings and errors during test
 config :logger, level: :warn
