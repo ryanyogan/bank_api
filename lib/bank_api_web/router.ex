@@ -19,8 +19,9 @@ defmodule BankAPIWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", BankAPIWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BankAPIWeb do
+    pipe_through :api
+
+    resources "/accounts", AccountController, only: [:create]
+  end
 end

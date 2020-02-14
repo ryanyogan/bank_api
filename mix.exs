@@ -20,7 +20,7 @@ defmodule BankAPI.MixProject do
   def application do
     [
       mod: {BankAPI.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :commanded]
     ]
   end
 
@@ -41,7 +41,8 @@ defmodule BankAPI.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:commanded, "~> 0.18"},
       {:eventstore, "~> 0.16.1", runtime: Mix.env() != :test},
-      {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test}
+      {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test},
+      {:commanded_ecto_projections, "~> 0.8"}
     ]
   end
 
